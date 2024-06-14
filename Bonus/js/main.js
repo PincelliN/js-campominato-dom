@@ -14,6 +14,7 @@ const Container = document.getElementById("game-table");
 const Level = document.querySelector("select");
 
 
+
 const Contatore = document.getElementById("punteggio");
 
 const EndGame =document.getElementById("score");
@@ -24,27 +25,54 @@ WannaPlay.addEventListener("click", function () {
   
   //aggiungo la classe hide al bottone e alla select
   Level.classList.add("hide");
-
+// variabile valore livello selezionato
+  const Difficult = document.querySelector("select").value;
   WannaPlay.classList.add("hide");
   //Rimuovo la classe hide alla tavola da gioco
   Container.classList.remove("hide");
   Contatore.classList.remove("hide");
   Contatore.classList.add("d-block")
   // condizioni per i differenti valori di difficoltà
-  
-    CreatElementsAndClass(
-      0,
-      100,
-      16,
-      "div",
-      "p",
-      "hide",
-      "square",
-      "veteran",
-      "boom",
-      "safe"
-    );
-  
+    if (Difficult == 2) {
+      CreatElementsAndClass(
+        0,
+        100,
+        16,
+        "div",
+        "p",
+        "hide",
+        "square",
+        "veteran",
+        "boom",
+        "safe"
+      );
+    } else if (Difficult == 1) {
+      CreatElementsAndClass(
+        0,
+        81,
+        16,
+        "div",
+        "p",
+        "hide",
+        "square",
+        "soldier",
+        "boom",
+        "safe"
+      );
+    } else {
+      CreatElementsAndClass(
+        0,
+        49,
+        16,
+        "div",
+        "p",
+        "hide",
+        "square",
+        "recluta",
+        "boom",
+        "safe"
+      );
+    }
 });
 
 //FUNZIONE
