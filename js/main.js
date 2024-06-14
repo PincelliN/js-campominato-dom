@@ -16,6 +16,8 @@ const Level = document.querySelector("select");
 
 const Contatore = document.getElementById("punteggio");
 
+const EndGame =document.getElementById("score");
+
 // creo un evento che da origine a tutto
 
 WannaPlay.addEventListener("click", function () {
@@ -105,16 +107,21 @@ function CreatElementsAndClass(
     Box.addEventListener("click",function (){
       //inserisco l'index al interno 
       
-     
+     let Punti= document.getElementsByClassName(Safeclass);
       
       if (Boom.includes(index)) {
         Box.classList.add(Boomclass);
         NumBox.classList.remove(classe);
+        EndGame.classList.remove(classe);
+        EndGame.innerHTML="Hai totalizato "+ Punti.length +" "+ "Punti";
       } else {
         Box.classList.add(Safeclass);
         NumBox.classList.remove(classe);
-        let Punti= document.getElementsByClassName(Safeclass);
         Contatore.innerHTML=(Punti.length);
+        if (Punti.length === max-numbomb) {
+
+          EndGame.innerHTML="You Win All";
+        }
       } 
    
     
