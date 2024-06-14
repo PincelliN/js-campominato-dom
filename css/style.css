@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: red;
+}
+#container {
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  color: white;
+  padding: 5px;
+}
+#game-table {
+  margin: 10px auto;
+  width: 80%;
+  aspect-ratio: 1/1;
+  background-color: blue;
+  color: white;
+}
+.square {
+  border: 1px solid white;
+  align-content: center;
+  font-size: large;
+}
+.veteran {
+  width: calc(100% / 10);
+  height: calc(100% / 10);
+}
+.soldier {
+  width: calc(100% / 9);
+  height: calc(100% / 9);
+}
+
+.recluta {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+}
+
+.click {
+  background-color: chartreuse;
+  color: black;
+  border: 1px solid black;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hide {
+  display: none;
+}
+
+
+.boom{
+  background-color: red;
+}
+.safe{
+background-color: green;
+}
