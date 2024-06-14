@@ -13,6 +13,9 @@ const Container = document.getElementById("game-table");
 //variabile select
 const Level = document.querySelector("select");
 
+
+const Contatore = document.getElementById("punteggio");
+
 // creo un evento che da origine a tutto
 
 WannaPlay.addEventListener("click", function () {
@@ -23,7 +26,8 @@ WannaPlay.addEventListener("click", function () {
   WannaPlay.classList.add("hide");
   //Rimuovo la classe hide alla tavola da gioco
   Container.classList.remove("hide");
-
+  Contatore.classList.remove("hide");
+  Contatore.classList.add("d-block")
   // condizioni per i differenti valori di difficoltà
   
     CreatElementsAndClass(
@@ -101,13 +105,18 @@ function CreatElementsAndClass(
     Box.addEventListener("click",function (){
       //inserisco l'index al interno 
       
+     
+      
       if (Boom.includes(index)) {
         Box.classList.add(Boomclass);
         NumBox.classList.remove(classe);
       } else {
         Box.classList.add(Safeclass);
-        NumBox.classList.remove(classe)
+        NumBox.classList.remove(classe);
+        let Punti= document.getElementsByClassName(Safeclass);
+        Contatore.innerHTML=(Punti.length);
       } 
+   
     
     }
     );
