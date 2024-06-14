@@ -16,8 +16,7 @@ const Level = document.querySelector("select");
 // creo un evento che da origine a tutto
 
 WannaPlay.addEventListener("click", function () {
-  // variabile valore livello selezionato
-  const Difficult = document.querySelector("select").value;
+  
   //aggiungo la classe hide al bottone e alla select
   Level.classList.add("hide");
 
@@ -26,40 +25,20 @@ WannaPlay.addEventListener("click", function () {
   Container.classList.remove("hide");
 
   // condizioni per i differenti valori di difficoltà
-  if (Difficult == 2) {
+  
     CreatElementsAndClass(
       0,
       100,
       16,
       "div",
+      "p",
+      "hide",
       "square",
       "veteran",
       "boom",
       "safe"
     );
-  } else if (Difficult == 1) {
-    CreatElementsAndClass(
-      0,
-      81,
-      16,
-      "div",
-      "square",
-      "soldier",
-      "boom",
-      "safe"
-    );
-  } else {
-    CreatElementsAndClass(
-      0,
-      49,
-      16,
-      "div",
-      "square",
-      "recluta",
-      "boom",
-      "safe"
-    );
-  }
+  
 });
 
 //FUNZIONE
@@ -95,8 +74,10 @@ function CreatElementsAndClass(
   max,
   numbomb,
   tag,
+  tag2,
   classe,
   classe2,
+  classe3,
   Boomclass,
   Safeclass
 ) {
@@ -107,27 +88,34 @@ function CreatElementsAndClass(
 
   for (let index = min; index < max; index++) {
     // variabili utilizata per i numeri che vanno inseriti nei box
-    let element = index;
-
     //variabile future celle
     let Box = document.createElement(tag);
-
     //aggiungo la classe con le caratteristiche delle celle
-    Box.classList.add(classe, classe2);
+    Box.classList.add(classe2, classe3);
 
+    let NumBox= document.createElement(tag2);
+    NumBox.append(index + 1);
+    NumBox.classList.add(classe);
+    Box.appendChild(NumBox);
     // aggiungo un evento per aggiugere una seconda classe in caso di click
-    Box.addEventListener("click", function () {
-      //inserisco l'index al interno
-      Box.append(index + 1);
-      console.log(index);
+    Box.addEventListener("click",function (){
+      //inserisco l'index al interno 
+      
       if (Boom.includes(index)) {
         Box.classList.add(Boomclass);
+        NumBox.classList.remove(classe);
       } else {
         Box.classList.add(Safeclass);
-      }
-    });
-
+        NumBox.classList.remove(classe)
+      } 
+    
+    }
+    );
+    
     //stampo tutto
     Container.appendChild(Box);
   }
 }
+ 
+    
+
