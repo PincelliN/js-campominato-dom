@@ -19,6 +19,8 @@ const Contatore = document.getElementById("punteggio");
 
 const EndGame =document.getElementById("score");
 
+
+
 // creo un evento che da origine a tutto
 
 WannaPlay.addEventListener("click", function () {
@@ -89,7 +91,7 @@ function BoomNum(min, max, numbomb) {
   //creo un generatore di bnumeri rando
   while (i < numbomb) {
     let Nub = RandomNumber(min, max);
-    console.log(Nub);
+
 
     // se nub non è incluso procedo
     if (Boom.includes(Nub) === false) {
@@ -97,7 +99,7 @@ function BoomNum(min, max, numbomb) {
       i++;
     }
   }
-  console.log(Boom);
+
   return Boom;
 }
 
@@ -120,6 +122,8 @@ function CreatElementsAndClass(
 
   let Boom = BoomNum(min, max, numbomb);
 
+    const ArrayBoxBomb = [];
+
   for (let index = min; index < max; index++) {
     // variabili utilizata per i numeri che vanno inseriti nei box
     //variabile future celle
@@ -131,6 +135,13 @@ function CreatElementsAndClass(
     NumBox.append(index + 1);
     NumBox.classList.add(classe);
     Box.appendChild(NumBox);
+
+
+  if (Boom.includes(index)) {
+    ArrayBoxBomb.push(Box);
+  }
+  console.log(ArrayBoxBomb);
+
     // aggiungo un evento per aggiugere una seconda classe in caso di click
     Box.addEventListener("click",function (){
       //inserisco l'index al interno 
@@ -138,7 +149,11 @@ function CreatElementsAndClass(
      let Punti= document.getElementsByClassName(Safeclass);
       
       if (Boom.includes(index)) {
-           Box.classList.add(Boomclass);
+
+        for (let i = 0; i < ArrayBoxBomb.length; i++) {
+          const element = ArrayBoxBomb[i].classList;
+          element.add(Boomclass);
+        }
         NumBox.classList.remove(classe);
         EndGame.classList.remove(classe);
         EndGame.innerHTML="Hai totalizato "+ Punti.length +" "+ "Punti";
@@ -162,3 +177,4 @@ function CreatElementsAndClass(
 }
  
     
+
